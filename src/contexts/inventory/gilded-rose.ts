@@ -68,8 +68,15 @@ export class GildedRose {
     // update conjured
   }
 
-  private updateRegularItem(_: Item) {
-    // update regular item
+  private updateRegularItem(item: Item) {
+    // Quality decreases by 1 before the sellIn date
+    if (item.sellIn > 0) {
+      item.quality--;
+    }
+    // Quality decreases by 2 after the sellIn date
+    else {
+      item.quality -= 2;
+    }
   }
 
   /*
