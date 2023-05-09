@@ -1,9 +1,16 @@
 import { createContext } from "react";
 import { Inventory, InventoryMethods } from "./types";
+import { Item } from "@/app/gilded-rose";
 
 // Initial inventory data
 export const initialInventory: Inventory = {
-  items: []
+  items: [
+    new Item("Regular Item", 10, 20),
+    new Item("Aged Brie", 2, 0),
+    new Item("Backstage Passes", 5, 7),
+    new Item("Sulfuras", 0, 80),
+    new Item("Conjured", 3, 6),
+  ]
 }
 
 // Initial inventory methods

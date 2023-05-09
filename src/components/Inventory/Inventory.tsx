@@ -15,10 +15,11 @@ export default function Inventory() {
 }
 
 const InventoryBox = styled.section`
+  --gap-width: 0.5rem;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-gap: 1rem;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: var(--gap-width);
+  padding: var(--gap-width);
   margin-bottom: 2rem;
   background-color: var(--background-color-dark);
-  padding: 1rem;
 `
