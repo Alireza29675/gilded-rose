@@ -1,6 +1,10 @@
+import { useInventory } from "@/contexts/inventory";
+
 function App() {
+  const { items } = useInventory();
+
   return (
-    <div>Hello World</div>
+    <div>{items.map(i => i.name)}</div>
   );
 }
 
