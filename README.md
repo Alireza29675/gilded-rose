@@ -1,1 +1,1 @@
-# gilded-rose
+# Gilded Rose
