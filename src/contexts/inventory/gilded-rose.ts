@@ -60,8 +60,23 @@ export class GildedRose {
     item.quality++;
   }
 
-  private updateBackstagePasses(_: Item) {
-    // update backstage passes
+  private updateBackstagePasses(item: Item) {
+    // Quality drops to 0 after the concert
+    if (item.sellIn <= 0) {
+      item.quality = 0;
+    }
+    // Quality increases by 3 when there are 5 days or less
+    else if (item.sellIn <= 5) {
+      item.quality += 3;
+    }
+    // Quality increases by 2 when there are 10 days or less
+    else if (item.sellIn <= 10) {
+      item.quality += 2;
+    }
+    // Quality increases by 1 when there are more than 10 days
+    else {
+      item.quality++;
+    }
   }
 
   private updateConjured(_: Item) {
