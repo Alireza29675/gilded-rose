@@ -1,5 +1,5 @@
 import { useMemo, useReducer } from 'react';
-import { context, initialInventory } from '.';
+import context, { initialInventory } from './context';
 import { createGildedRoseReducer } from './reducer';
 import { GildedRose, Item } from '@/app/gilded-rose';
 import { AddItemAction } from './types';
