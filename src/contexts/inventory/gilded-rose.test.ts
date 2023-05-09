@@ -212,7 +212,7 @@ describe('GildedRose class functionality', () => {
     });
   });
 
-  describe.skip('Conjured Items', () => {
+  describe('Conjured Items', () => {
     it('should decrease quality by 2 before the sellIn date', () => {
       const conjured = createItem('Conjured', {
         sellIn: 5,
