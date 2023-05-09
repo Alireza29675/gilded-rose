@@ -2,6 +2,18 @@ import { styled } from "styled-components";
 import { useInventory } from "@/contexts/inventory";
 import pixelBordered from "@/utils/styling/pixelBordered";
 
+export default function NextDayButton() {
+  const { nextDay } = useInventory();
+
+  return (
+    <Button onClick={nextDay}>
+      <span>
+        Next Day +1
+      </span>
+    </Button>
+  );
+}
+
 const Button = styled.button`
   background: transparent;
   color: var(--accent-color);
@@ -21,15 +33,3 @@ const Button = styled.button`
     opacity: 0.5;
   }
 `
-
-export default function NextDayButton() {
-  const { nextDay } = useInventory();
-
-  return (
-    <Button onClick={nextDay}>
-      <span>
-        Next Day +1
-      </span>
-    </Button>
-  );
-}

@@ -1,9 +1,25 @@
 import { styled } from "styled-components";
 import NextDayButton from "./NextDayButton";
+import Inventory from "./Inventory/Inventory";
 
-const Wrapper = styled.main`
+export default function App() {
+  return (
+    <AppWrapper>
+      <Header>
+        <RoseImage src="/rose.png" alt="Rose" />
+        <Title>Gilded Rose</Title>
+      </Header>
+      <Inventory />
+      <NextDayButton />
+    </AppWrapper>
+  );
+}
+
+const AppWrapper = styled.main`
   padding: 4em;
   text-align: center;
+  max-width: var(--app-max-width);
+  margin: 0 auto
 `
 
 const Header = styled.header`
@@ -22,18 +38,3 @@ const Title = styled.h1`
 const RoseImage = styled.img`
   height: 200px;
 `
-
-function App() {
-  return (
-    <Wrapper>
-      <Header>
-        <RoseImage src="/rose.png" alt="Rose" />
-        <Title>Gilded Rose</Title>
-      </Header>
-
-      <NextDayButton />
-    </Wrapper>
-  );
-}
-
-export default App;

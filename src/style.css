@@ -6,6 +6,8 @@ html {
   /* variables */
   --accent-color: #ff002e;
   --background-color: #ffefd5;
+  --background-color-dark: #5b4536;
+  --app-max-width: 800px;
 }
 
 html, body {
