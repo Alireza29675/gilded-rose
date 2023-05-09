@@ -2,6 +2,7 @@ import { Item } from "@/app/gilded-rose";
 import { ItemType } from "@/types";
 import getItemType from "@/utils/getItemType";
 import oneOf from "@/utils/oneOf";
+import pixelBordered from "@/utils/styling/pixelBordered";
 import { useMemo } from "react";
 import { styled } from "styled-components";
 
@@ -34,20 +35,23 @@ export default function InventoryItem({ item }: InventoryItemProps) {
   }, [name]);
 
   return (
-    <ItemBox>
+    <ItemBox image={imageSource}>
       <h3>{name}</h3>
-      <ItemImage src={imageSource} alt={name} />
     </ItemBox>
   );
 }
 
-const ItemBox = styled.div`
+const ItemBox = styled.div<{ image: string }>`
   display: flex;
+  width: 150px;
+  height: 150px;
+  flex-shrink: 0;
   flex-direction: column;
   align-items: center;
   background-color: var(--background-color);
-`
-
-const ItemImage = styled.img`
-  width: 90%;
+  background-image: ${props => `url(${props.image})`};
+  background-size: 70%;
+  background-repeat: no-repeat;
+  background-position: center 30px;
+  ${pixelBordered(6, '#888')}
 `

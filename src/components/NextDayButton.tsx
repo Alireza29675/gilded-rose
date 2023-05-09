@@ -15,16 +15,16 @@ export default function NextDayButton() {
 }
 
 const Button = styled.button`
-  background: var(--background-color-dark);
+  background: var(--secondary-color);
   color: var(--background-color);
   margin: 0 1em;
   padding: 0.5em 1em;
   font-size: 2.5rem;
   cursor: pointer;
-  ${pixelBordered(6, '#222')}
+  ${pixelBordered(6, 'var(--secondary-color-dark)')}
 
   &:hover {
-    transform: scale(1.05);
+    transform: scale(1.03);
   }
 
   &:active {

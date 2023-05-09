@@ -7,19 +7,34 @@ export default function Inventory() {
 
   return (
     <InventoryBox>
-      {items.map((item, index) => (
-        <InventoryItem key={index} item={item} />
-      ))}
+      <InventoryList>
+        {items.map((item, index) => (
+          <InventoryItem key={index} item={item} />
+        ))}
+      </InventoryList>
     </InventoryBox>
   );
 }
 
-const InventoryBox = styled.section`
-  --gap-width: 0.5rem;
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-gap: var(--gap-width);
-  padding: var(--gap-width);
+const InventoryBox = styled.div`
+  overflow-x: visible;
+  overflow-y: hidden;
+  background-color: var(--secondary-color);
+  padding: 1rem;
   margin-bottom: 2rem;
-  background-color: var(--background-color-dark);
+
+  &::-webkit-scrollbar {
+    height: 0.5rem;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--secondary-color-dark);
+  }
+`
+
+const InventoryList = styled.ul`
+  display: flex;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
 `

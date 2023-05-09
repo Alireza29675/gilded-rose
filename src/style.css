@@ -5,8 +5,10 @@
 html {
   /* variables */
   --accent-color: #ff002e;
+  --secondary-color: #5b4536;
+  --secondary-color-dark: #222;
   --background-color: #ffefd5;
-  --background-color-dark: #5b4536;
+  --background-color-dark: #d9cbb3;
   --app-max-width: 800px;
 }
 
