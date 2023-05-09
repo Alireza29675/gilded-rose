@@ -1,9 +1,26 @@
-import { GildedRose, Item } from "./gilded-rose";
+describe('GildedRose class functionality', () => {
+  describe('General', () => {
+    // General tests which apply to all items in the inventory
+  });
 
-describe("Gilded Rose", () => {
-  it("should foo", () => {
-    const gildedRose = new GildedRose([new Item("foo", 0, 0)]);
-    const items = gildedRose.updateQuality();
-    expect(items[0].name).toEqual("foo");
+
+  describe('Regular Items', () => {
+    // Regular items and their calculations goes here
+  });
+
+  describe('Aged Brie', () => {
+    // Aged Brie and its calculations goes here
+  });
+
+  describe('Sulfuras', () => {
+    // Sulfuras and its calculations goes here
+  });
+
+  describe('Backstage Passes', () => {
+    // Backstage passes and its calculations goes here
+  });
+
+  describe('Conjured Items', () => {
+    // Conjured items and its calculations goes here
   });
 });
