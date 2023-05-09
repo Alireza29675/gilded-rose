@@ -150,7 +150,66 @@ describe('GildedRose class functionality', () => {
   });
 
   describe('Backstage Passes', () => {
-    // Backstage passes and its calculations goes here
+    test('Quality increases by 1 when there are more than 10 days left', () => {
+      const passes = createItem('Backstage passes to a TAFKAL80ETC concert', {
+        sellIn: 11,
+        quality: 20
+      });
+      gildedRose.items = [passes];
+
+      gildedRose.updateQuality();
+
+      expect(passes.quality).toBe(21);
+    });
+
+    test('Quality increases by 2 when there are 10 days or less', () => {
+      const passes = createItem('Backstage passes to a TAFKAL80ETC concert', {
+        sellIn: 10,
+        quality: 20
+      });
+      gildedRose.items = [passes];
+
+      gildedRose.updateQuality();
+
+      expect(passes.quality).toBe(22);
+    });
+
+    test('Quality increases by 3 when there are 5 days or less', () => {
+      const passes = createItem('Backstage passes to a TAFKAL80ETC concert', {
+        sellIn: 5,
+        quality: 20
+      });
+      gildedRose.items = [passes];
+
+      gildedRose.updateQuality();
+
+      expect(passes.quality).toBe(23);
+    });
+
+    test('Quality drops to 0 after the concert', () => {
+      const passes = createItem('Backstage passes to a TAFKAL80ETC concert', {
+        sellIn: 0,
+        quality: 20
+      });
+      gildedRose.items = [passes];
+
+      gildedRose.updateQuality();
+
+      expect(passes.quality).toBe(0);
+    });
+
+    test('Quality never goes above 50', () => {
+      const passes = createItem('Backstage passes to a TAFKAL80ETC concert', {
+        sellIn: 5,
+        quality: 49
+      });
+      gildedRose.items = [passes];
+
+      gildedRose.updateQuality();
+
+      // Quality should be increased by 3 (52), but it never goes above 50
+      expect(passes.quality).toBe(50);
+    });
   });
 
   describe('Conjured Items', () => {
