@@ -20,6 +20,17 @@ export class GildedRose {
     this.items = items;
   }
 
+  addItem(name: string, sellIn: number, quality: number) {
+    this.items.push(new Item(name, sellIn, quality));
+  }
+
+  removeItem(item: Item) {
+    const index = this.items.indexOf(item);
+    if (index > -1) {
+      this.items.splice(index, 1);
+    }
+  }
+
   updateQuality() {
     for (const item of this.items) {
       this.updateItem(item)
