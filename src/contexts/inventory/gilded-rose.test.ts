@@ -92,7 +92,31 @@ describe('GildedRose class functionality', () => {
   });
 
   describe('Aged Brie', () => {
-    // Aged Brie and its calculations goes here
+    test('Aged Brie should increase in Quality as it gets older', () => {
+      const agedBrie = createItem('Aged Brie', {
+        sellIn: 10,
+        quality: 20
+      });
+      gildedRose.items = [agedBrie];
+
+      gildedRose.updateQuality();
+
+      expect(agedBrie.sellIn).toBe(9);
+      expect(agedBrie.quality).toBe(21);
+    });
+
+    test('Aged Brie Quality should not increase above 50', () => {
+      const agedBrie = createItem('Aged Brie', {
+        sellIn: 10,
+        quality: 50
+      });
+      gildedRose.items = [agedBrie];
+
+      gildedRose.updateQuality();
+
+      expect(agedBrie.sellIn).toBe(9);
+      expect(agedBrie.quality).toBe(50);
+    });
   });
 
   describe('Sulfuras', () => {
