@@ -29,6 +29,37 @@ describe('GildedRose class functionality', () => {
       gildedRose.updateQuality();
       expect(gildedRose.items[0].quality).toBe(0);
     });
+
+    test('updateQuality() should decrease sellIn by 1', () => {
+      const item = createItem('Test Item', {
+        sellIn: 10,
+        quality: 20
+      });
+      gildedRose.items = [item];
+
+      gildedRose.updateQuality();
+
+      expect(gildedRose.items[0].sellIn).toBe(9);
+    });
+
+    test('updateQuality() should update multiple items', () => {
+      const item1 = createItem('Test Item 1', {
+        sellIn: 10,
+        quality: 20
+      });
+      const item2 = createItem('Test Item 2', {
+        sellIn: 10,
+        quality: 20
+      });
+      gildedRose.items = [item1, item2];
+
+      gildedRose.updateQuality();
+
+      expect(gildedRose.items[0].sellIn).toBe(9);
+      expect(gildedRose.items[1].sellIn).toBe(9);
+      expect(gildedRose.items[0].quality).toBe(19);
+      expect(gildedRose.items[1].quality).toBe(19);
+    })
   });
 
 
