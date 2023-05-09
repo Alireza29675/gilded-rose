@@ -1,5 +1,5 @@
-import { ItemType } from "./types";
-import getItemType from "./utils/getItemType";
+import { ItemType } from "@/types";
+import getItemType from "@/utils/getItemType";
 
 export class Item {
   name: string;
