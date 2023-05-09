@@ -1,6 +1,32 @@
-======================================
-Gilded Rose Requirements Specification
-======================================
+# Gilded Rose 🔸
+
+## Installation
+
+- Clone the repository
+
+```bash
+git clone git@github.com:Alireza29675/gilded-rose.git
+```
+
+- Install dependencies
+
+```bash
+pnpm install # or npm install
+```
+
+- Run the tests
+
+```bash
+pnpm test # or npm test
+```
+
+- Run the app
+
+```bash
+pnpm dev # or npm run dev
+```
+
+## Gilded Rose Requirements Specification
 
 Hi and welcome to team Gilded Rose. As you know, we are a small inn with a prime location in a
 prominent city ran by a friendly innkeeper named Allison. We also buy and sell only the finest goods.
