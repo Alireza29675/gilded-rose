@@ -14,22 +14,6 @@ describe('GildedRose class functionality', () => {
   });
 
   describe('General', () => {
-    test('Quality should never be negative', () => {
-      const item = createItem('Test Item', {
-        sellIn: 10,
-        quality: 1
-      });
-      gildedRose.items = [item];
-
-      // Quality should decrease by 1 => 0
-      gildedRose.updateQuality();
-      expect(gildedRose.items[0].quality).toBe(0);
-
-      // Quality should not decrease below 0 => still 0
-      gildedRose.updateQuality();
-      expect(gildedRose.items[0].quality).toBe(0);
-    });
-
     test('updateQuality() should decrease sellIn by 1', () => {
       const item = createItem('Test Item', {
         sellIn: 10,
@@ -88,6 +72,22 @@ describe('GildedRose class functionality', () => {
 
       expect(item.sellIn).toBe(-1);
       expect(item.quality).toBe(18);
+    });
+
+    test('Quality should never be negative', () => {
+      const item = createItem('Regular Item', {
+        sellIn: 10,
+        quality: 1
+      });
+      gildedRose.items = [item];
+
+      // Quality should decrease by 1 => 0
+      gildedRose.updateQuality();
+      expect(gildedRose.items[0].quality).toBe(0);
+
+      // Quality should not decrease below 0 => still 0
+      gildedRose.updateQuality();
+      expect(gildedRose.items[0].quality).toBe(0);
     });
   });
 
@@ -247,18 +247,6 @@ describe('GildedRose class functionality', () => {
       gildedRose.updateQuality();
 
       expect(conjured.quality).toBe(0);
-    });
-
-    it('should decrease sellIn by 1 each day', () => {
-      const conjured = createItem('Conjured', {
-        sellIn: 5,
-        quality: 10
-      });
-      gildedRose.items = [conjured];
-
-      gildedRose.updateQuality();
-
-      expect(conjured.sellIn).toBe(4);
     });
   });
 });
