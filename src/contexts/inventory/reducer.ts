@@ -16,13 +16,6 @@ export const createGildedRoseReducer = (gildedRose: GildedRose) => {
           items: [...gildedRose.items]
         }
 
-      case 'REMOVE_ITEM':
-        gildedRose.removeItem(action.payload.item)
-        return {
-          ...state,
-          items: [...gildedRose.items]
-        }
-
       case 'NEXT_DAY':
         gildedRose.updateQuality()
 

@@ -1,7 +1,7 @@
 import { useMemo, useReducer } from 'react';
 import context, { initialInventory } from './context';
 import { createGildedRoseReducer } from './reducer';
-import { GildedRose, Item } from '@/app/gilded-rose';
+import { GildedRose } from '@/app/gilded-rose';
 import { AddItemAction } from './types';
 
 const { Provider } = context;
@@ -21,7 +21,6 @@ function InventoryProvider({ children }: InventoryProviderProps) {
   // Inventory methods
   const nextDay = () => dispatch({ type: 'NEXT_DAY' });
   const addItem = (payload: AddItemAction['payload']) => dispatch({ type: 'ADD_ITEM', payload });
-  const removeItem = (item: Item) => dispatch({ type: 'REMOVE_ITEM', payload: { item } });
 
 
   return (
@@ -29,7 +28,6 @@ function InventoryProvider({ children }: InventoryProviderProps) {
       ...state,
       nextDay,
       addItem,
-      removeItem,
     }}>{children}</Provider>
   );
 }

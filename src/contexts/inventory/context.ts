@@ -18,7 +18,6 @@ export const initialInventory: Inventory = {
 const noop = () => { /* do nothing */ }
 export const initialInventoryMethods: InventoryMethods = {
   addItem: noop,
-  removeItem: noop,
   nextDay: noop,
 }
 
