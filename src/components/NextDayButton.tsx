@@ -15,21 +15,20 @@ export default function NextDayButton() {
 }
 
 const Button = styled.button`
-  background: transparent;
-  color: var(--accent-color);
+  background: var(--background-color-dark);
+  color: var(--background-color);
   margin: 0 1em;
-  padding: 0.25em 1em;
-  font-size: 2rem;
+  padding: 0.5em 1em;
+  font-size: 2.5rem;
   cursor: pointer;
-  ${pixelBordered(4, 'var(--accent-color)')}
+  ${pixelBordered(6, '#222')}
 
   &:hover {
     transform: scale(1.05);
-    background-color: rgba(255, 255, 255, 0.2);
   }
 
   &:active {
     transform: scale(0.99);
-    opacity: 0.5;
+    opacity: 0.8;
   }
 `

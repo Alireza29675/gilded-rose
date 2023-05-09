@@ -49,5 +49,5 @@ const ItemBox = styled.div`
 `
 
 const ItemImage = styled.img`
-  width: 100%;
+  width: 90%;
 `
