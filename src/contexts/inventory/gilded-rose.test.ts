@@ -120,7 +120,33 @@ describe('GildedRose class functionality', () => {
   });
 
   describe('Sulfuras', () => {
-    // Sulfuras and its calculations goes here
+    it('should not change sellIn and quality', () => {
+      const sulfuras = createItem('Sulfuras, Hand of Ragnaros', {
+        sellIn: 5,
+        quality: 80
+      });
+      gildedRose.items = [sulfuras];
+
+      gildedRose.updateQuality();
+
+      expect(sulfuras.sellIn).toBe(5);
+      expect(sulfuras.quality).toBe(80);
+    });
+
+    it('should not change sellIn and quality after multiple days', () => {
+      const sulfuras = createItem('Sulfuras, Hand of Ragnaros', {
+        sellIn: 7,
+        quality: 80
+      });
+      gildedRose.items = [sulfuras];
+
+      for (let i = 0; i < 3; i++) {
+        gildedRose.updateQuality();
+      }
+
+      expect(sulfuras.sellIn).toBe(7);
+      expect(sulfuras.quality).toBe(80);
+    });
   });
 
   describe('Backstage Passes', () => {
