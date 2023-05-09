@@ -212,7 +212,53 @@ describe('GildedRose class functionality', () => {
     });
   });
 
-  describe('Conjured Items', () => {
-    // Conjured items and its calculations goes here
+  describe.skip('Conjured Items', () => {
+    it('should decrease quality by 2 before the sellIn date', () => {
+      const conjured = createItem('Conjured', {
+        sellIn: 5,
+        quality: 10
+      });
+      gildedRose.items = [conjured];
+
+      gildedRose.updateQuality();
+
+      expect(conjured.quality).toBe(8);
+    });
+
+    it('should decrease quality by 4 after the sellIn date', () => {
+      const conjured = createItem('Conjured', {
+        sellIn: 0,
+        quality: 10
+      });
+      gildedRose.items = [conjured];
+
+      gildedRose.updateQuality();
+
+      expect(conjured.quality).toBe(6);
+    });
+
+    it('should not decrease quality below 0', () => {
+      const conjured = createItem('Conjured', {
+        sellIn: 5,
+        quality: 1
+      });
+      gildedRose.items = [conjured];
+
+      gildedRose.updateQuality();
+
+      expect(conjured.quality).toBe(0);
+    });
+
+    it('should decrease sellIn by 1 each day', () => {
+      const conjured = createItem('Conjured', {
+        sellIn: 5,
+        quality: 10
+      });
+      gildedRose.items = [conjured];
+
+      gildedRose.updateQuality();
+
+      expect(conjured.sellIn).toBe(4);
+    });
   });
 });
