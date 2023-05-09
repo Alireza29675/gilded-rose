@@ -21,11 +21,11 @@ describe('GildedRose class functionality', () => {
       });
       gildedRose.items = [item];
 
-      // Quality should decrease by 1
+      // Quality should decrease by 1 => 0
       gildedRose.updateQuality();
       expect(gildedRose.items[0].quality).toBe(0);
 
-      // Quality should not decrease below 0
+      // Quality should not decrease below 0 => still 0
       gildedRose.updateQuality();
       expect(gildedRose.items[0].quality).toBe(0);
     });
@@ -55,6 +55,7 @@ describe('GildedRose class functionality', () => {
 
       gildedRose.updateQuality();
 
+      // Both items should have their sellIn decreased by 1 and quality by 1
       expect(gildedRose.items[0].sellIn).toBe(9);
       expect(gildedRose.items[1].sellIn).toBe(9);
       expect(gildedRose.items[0].quality).toBe(19);
@@ -64,7 +65,30 @@ describe('GildedRose class functionality', () => {
 
 
   describe('Regular Items', () => {
-    // Regular items and their calculations goes here
+    test('Quality decreases by 1 before the sellIn date', () => {
+      const item = createItem('Regular Item', {
+        sellIn: 10,
+        quality: 20
+      });
+      gildedRose.items = [item];
+
+      gildedRose.updateQuality();
+
+      expect(item.sellIn).toBe(9);
+      expect(item.quality).toBe(19);
+    });
+
+    test('Quality decreases by 2 after the sellIn date', () => {
+      const item = createItem('Regular Item', {
+        sellIn: 0,
+        quality: 20
+      });
+      gildedRose.items = [item];
+      gildedRose.updateQuality();
+
+      expect(item.sellIn).toBe(-1);
+      expect(item.quality).toBe(18);
+    });
   });
 
   describe('Aged Brie', () => {
