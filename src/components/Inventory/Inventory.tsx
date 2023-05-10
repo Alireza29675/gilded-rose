@@ -29,6 +29,7 @@ const InventoryBox = styled.div`
   overflow-y: hidden;
   background-color: var(--secondary-color);
   padding: 1rem;
+  cursor: grab;
   ${pixelBordered()}
 
   &::-webkit-scrollbar {

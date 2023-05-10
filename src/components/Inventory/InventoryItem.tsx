@@ -116,6 +116,8 @@ const ItemQualityProgressbar = styled.div<{ value: number, tooltip: string }>`
   width: 100%;
   height: 7px;
   background-color: var(--background-color-dark);
+  cursor: default;
+  z-index: 1;
   ${props => tooltipOnHover(props.tooltip)}
 
   & > div {
