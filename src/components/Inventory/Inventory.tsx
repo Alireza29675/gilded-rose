@@ -1,4 +1,7 @@
+import { useRef } from "react";
 import { styled } from "styled-components";
+import { useDraggable } from "react-use-draggable-scroll";
+
 import InventoryItem from "./InventoryItem";
 import { useInventory } from "@/contexts/inventory";
 import pixelBordered from "@/utils/styling/pixelBordered";
@@ -6,8 +9,12 @@ import pixelBordered from "@/utils/styling/pixelBordered";
 export default function Inventory() {
   const { items } = useInventory();
 
+  // To enable scrolling by dragging, we need to pass the ref to the element
+  const ref = useRef<HTMLDivElement>(null) as React.MutableRefObject<HTMLDivElement>;
+  const { events } = useDraggable(ref);
+
   return (
-    <InventoryBox>
+    <InventoryBox {...events} ref={ref}>
       <InventoryList>
         {items.map((item, index) => (
           <InventoryItem key={index} item={item} />
