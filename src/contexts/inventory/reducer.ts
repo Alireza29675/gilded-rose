@@ -1,4 +1,4 @@
-import cloneDeep from "lodash/clonedeep";
+import { cloneDeep } from "lodash";
 import { GildedRose } from "@/app/gilded-rose"
 import { Inventory, InventoryAction } from "./types";
 
