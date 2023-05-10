@@ -9,7 +9,7 @@ html {
   --secondary-color-dark: #222;
   --background-color: #ffefd5;
   --background-color-dark: #d9cbb3;
-  --app-max-width: 800px;
+  --app-width: 800px;
 }
 
 html, body {

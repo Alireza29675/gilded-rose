@@ -1,6 +1,7 @@
 import { styled } from "styled-components";
 import NextDayButton from "./NextDayButton";
 import Inventory from "./Inventory/Inventory";
+import breakpoints from "@/utils/styling/breakpoints";
 
 export default function App() {
   return (
@@ -18,8 +19,13 @@ export default function App() {
 const AppWrapper = styled.main`
   padding: 4em;
   text-align: center;
-  max-width: var(--app-max-width);
-  margin: 0 auto
+  max-width: var(--app-width);
+  margin: 0 auto;
+
+  @media ${breakpoints.tablet} {
+    max-width: 100%;
+    padding: 2rem 0;
+  }
 `
 
 const Header = styled.header`
