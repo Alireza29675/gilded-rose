@@ -33,7 +33,7 @@ const InventoryBox = styled.div`
   ${pixelBordered()}
 
   &::-webkit-scrollbar {
-    height: 0.5rem;
+    height: 0.2rem;
   }
 
   &::-webkit-scrollbar-thumb {

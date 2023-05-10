@@ -91,4 +91,9 @@ const Button = styled.button`
     transform: scale(0.99);
     opacity: 0.8;
   }
+
+  @media ${breakpoints.tablet} {
+    width: 300px;
+    margin: auto;
+  }
 `

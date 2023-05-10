@@ -1,4 +1,4 @@
-import { useCallback, useReducer } from 'react';
+import { useReducer } from 'react';
 import context, { initialInventory } from './context';
 import reducer from './reducer';
 import { AddItemAction } from './types';
@@ -13,10 +13,8 @@ function InventoryProvider({ children }: InventoryProviderProps) {
   const [state, dispatch] = useReducer(reducer, initialInventory);
 
   // Inventory methods
-  const nextDay = useCallback(() => dispatch({ type: 'NEXT_DAY' }), []);
-  const addItem = useCallback((payload: AddItemAction['payload']) =>
-    dispatch({ type: 'ADD_ITEM', payload })
-    , []);
+  const nextDay = () => dispatch({ type: 'NEXT_DAY' });
+  const addItem = (payload: AddItemAction['payload']) => dispatch({ type: 'ADD_ITEM', payload })
 
   return (
     <Provider value={{
