@@ -1,9 +1,12 @@
 import { styled } from "styled-components";
-import NextDayButton from "./NextDayButton";
 import Inventory from "./Inventory/Inventory";
 import breakpoints from "@/utils/styling/breakpoints";
+import pixelBordered from "@/utils/styling/pixelBordered";
+import { useInventory } from "@/contexts/inventory";
 
 export default function App() {
+  const { nextDay } = useInventory();
+
   return (
     <AppWrapper>
       <Header>
@@ -11,7 +14,9 @@ export default function App() {
         <Title>Gilded Rose</Title>
       </Header>
       <Inventory />
-      <NextDayButton />
+      <div>
+        <Button onClick={nextDay}>Next Day +1</Button>
+      </div>
     </AppWrapper>
   );
 }
@@ -43,4 +48,23 @@ const Title = styled.h1`
 
 const RoseImage = styled.img`
   height: 200px;
+`
+
+const Button = styled.button`
+  background: var(--secondary-color);
+  color: var(--background-color);
+  margin: 0 0.6rem;
+  padding: 1rem 2rem;
+  font-size: 2.5rem;
+  cursor: pointer;
+  ${pixelBordered(6, 'var(--secondary-color-dark)')}
+
+  &:hover {
+    transform: scale(1.03);
+  }
+
+  &:active {
+    transform: scale(0.99);
+    opacity: 0.8;
+  }
 `

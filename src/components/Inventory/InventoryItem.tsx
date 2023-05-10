@@ -4,6 +4,7 @@ import getItemType from "@/utils/getItemType";
 import oneOf from "@/utils/oneOf";
 import clampedText from "@/utils/styling/clampedText";
 import pixelBordered from "@/utils/styling/pixelBordered";
+import tooltipOnHover from "@/utils/styling/tooltipOnHover";
 import { useMemo } from "react";
 import { styled } from "styled-components";
 
@@ -24,7 +25,7 @@ interface InventoryItemProps {
 }
 
 export default function InventoryItem({ item }: InventoryItemProps) {
-  const { name } = item;
+  const { name, quality } = item;
 
   const imageSource = useMemo(() => {
     // First we get the item type
@@ -35,9 +36,12 @@ export default function InventoryItem({ item }: InventoryItemProps) {
     return itemTypeImageSources[type];
   }, [name]);
 
+  const qualityTooltip = `Quality: ${quality}`
+
   return (
     <ItemBox image={imageSource}>
       <ItemName>{name}</ItemName>
+      <ItemQuality tooltip={qualityTooltip}>{quality}</ItemQuality>
     </ItemBox>
   );
 }
@@ -54,6 +58,7 @@ const ItemBox = styled.div<{ image: string }>`
   background-size: 70%;
   background-repeat: no-repeat;
   background-position: center 30px;
+  position: relative;
   ${pixelBordered(6, '#888')}
 `
 
@@ -65,4 +70,21 @@ const ItemName = styled.h3`
   max-width: 100%;
   margin: 0.7rem;
   ${clampedText(2)}
+`
+
+const ItemQuality = styled.div<{ tooltip: string }>`
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: var(--background-color);
+  width: 35px;
+  height: 35px;
+  display: grid;
+  place-items: center;
+  color: var(--text-color);
+  font-size: 1.6rem;
+  font-weight: 500;
+  cursor: default;
+  ${pixelBordered(2, '#888')}
+  ${props => tooltipOnHover(props.tooltip)}
 `
