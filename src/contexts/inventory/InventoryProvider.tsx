@@ -22,7 +22,6 @@ function InventoryProvider({ children }: InventoryProviderProps) {
   const nextDay = () => dispatch({ type: 'NEXT_DAY' });
   const addItem = (payload: AddItemAction['payload']) => dispatch({ type: 'ADD_ITEM', payload });
 
-
   return (
     <Provider value={{
       ...state,

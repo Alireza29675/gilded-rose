@@ -3,9 +3,16 @@ import Inventory from "./Inventory/Inventory";
 import breakpoints from "@/utils/styling/breakpoints";
 import pixelBordered from "@/utils/styling/pixelBordered";
 import { useInventory } from "@/contexts/inventory";
+import getRandomItem from "@/utils/getRandomItem";
+import { useCallback } from "react";
 
 export default function App() {
-  const { nextDay } = useInventory();
+  const { nextDay, addItem } = useInventory();
+
+  const addRandomItem = useCallback(() => {
+    const item = getRandomItem();
+    addItem(item);
+  }, [addItem]);
 
   return (
     <AppWrapper>
@@ -15,6 +22,7 @@ export default function App() {
       </Header>
       <Inventory />
       <div>
+        <Button onClick={addRandomItem}>+</Button>
         <Button onClick={nextDay}>Next Day +1</Button>
       </div>
     </AppWrapper>

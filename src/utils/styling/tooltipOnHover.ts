@@ -14,7 +14,7 @@ const tooltipOnHover = (tooltip: string) => {
       font-size: 0.75rem;
       border-radius: 0.25rem;
       white-space: nowrap;
-      z-index: 1;
+      z-index: 99;
     }
 
     &:hover:before {
@@ -25,7 +25,7 @@ const tooltipOnHover = (tooltip: string) => {
       transform: translateX(-50%);
       border: 0.5rem solid transparent;
       border-top-color: #000;
-      z-index: 1;
+      z-index: 99;
     }
   `
 }
