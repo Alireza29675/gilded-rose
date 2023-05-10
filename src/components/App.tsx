@@ -22,8 +22,8 @@ export default function App() {
       </Header>
       <Inventory />
       <Footer>
-        <Button onClick={addRandomItem} onTouchStart={addRandomItem}>+</Button>
-        <Button onClick={nextDay} onTouchStart={nextDay}>Next Day +1</Button>
+        <Button onClick={addRandomItem}>+</Button>
+        <Button onClick={nextDay}>Next Day +1</Button>
       </Footer>
     </AppWrapper>
   );
