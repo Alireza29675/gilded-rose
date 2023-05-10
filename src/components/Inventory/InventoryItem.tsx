@@ -14,10 +14,7 @@ const itemTypeImageSources = {
   [ItemType.Sulfuras]: "/sulfuras.png",
 }
 
-const regularItemImageSources = [
-  '/regular-1.png',
-  '/regular-2.png',
-]
+const regularItemImageSources = Array.from({ length: 5 }, (_, i) => `/regular-${i + 1}.png`);
 
 interface InventoryItemProps {
   item: Item;
