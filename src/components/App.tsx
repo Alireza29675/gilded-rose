@@ -69,7 +69,7 @@ const Footer = styled.footer`
   gap: 1.5rem;
 
   @media ${breakpoints.tablet} {
-    flex-direction: column;
+    flex-direction: column-reverse;
     align-items: stretch;
     padding: 0 2rem;
   }
