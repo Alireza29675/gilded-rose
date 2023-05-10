@@ -1,6 +1,7 @@
 import { styled } from "styled-components";
 import InventoryItem from "./InventoryItem";
 import { useInventory } from "@/contexts/inventory";
+import pixelBordered from "@/utils/styling/pixelBordered";
 
 export default function Inventory() {
   const { items } = useInventory();
@@ -21,14 +22,14 @@ const InventoryBox = styled.div`
   overflow-y: hidden;
   background-color: var(--secondary-color);
   padding: 1rem;
-  margin-bottom: 2rem;
+  ${pixelBordered()}
 
   &::-webkit-scrollbar {
     height: 0.5rem;
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: var(--secondary-color-dark);
+    background-color: var(--scrollbar-color);
   }
 `
 

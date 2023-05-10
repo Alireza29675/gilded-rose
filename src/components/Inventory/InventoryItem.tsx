@@ -59,12 +59,9 @@ export default function InventoryItem({ item }: InventoryItemProps) {
 }
 
 const ItemBox = styled.div<{ image: string, quality: number }>`
-  display: flex;
   width: 150px;
   height: 150px;
   flex-shrink: 0;
-  flex-direction: column;
-  align-items: center;
   background-color: var(--background-color);
   background-image: ${props => `url(${props.image})`};
   background-size: 70%;
@@ -72,7 +69,6 @@ const ItemBox = styled.div<{ image: string, quality: number }>`
   background-position: center 30px;
   position: relative;
   ${props => `filter: grayscale(${1 - props.quality});`}
-  ${pixelBordered(6, '#888')}
 
   &:hover {
     z-index: 2;
@@ -92,8 +88,8 @@ const ItemName = styled.h3`
 
 const ItemSellIn = styled.div<{ tooltip: string }>`
   position: absolute;
-  bottom: 7px;
-  right: 0;
+  bottom: 0.6rem;
+  right: 0.1rem;
   background-color: var(--background-color);
   width: 30px;
   height: 30px;
@@ -103,15 +99,15 @@ const ItemSellIn = styled.div<{ tooltip: string }>`
   font-size: 1.4rem;
   font-weight: 500;
   cursor: default;
-  ${pixelBordered(2, '#888')}
   ${props => tooltipOnHover(props.tooltip)}
 `
 
 const getProgressColor = (value: number) => {
   if (value < 20) return '#ff0000'
   if (value < 40) return '#ff8800'
-  if (value < 60) return '#ffff00'
-  return '#00ff00'
+  if (value < 60) return '#aac233'
+  if (value < 80) return '#c2af33'
+  return '#1ee41e'
 }
 
 const ItemQualityProgressbar = styled.div<{ value: number, tooltip: string }>`
