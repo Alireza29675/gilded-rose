@@ -18,9 +18,10 @@ const regularItemImageSources = Array.from({ length: 5 }, (_, i) => `/regular-${
 
 interface InventoryItemProps {
   item: Item;
+  as?: string;
 }
 
-export default function InventoryItem({ item }: InventoryItemProps) {
+export default function InventoryItem({ item, as = 'li' }: InventoryItemProps) {
   const { name, quality, sellIn } = item;
 
   const type = useMemo(() => getItemType(name), [name]);
@@ -33,6 +34,7 @@ export default function InventoryItem({ item }: InventoryItemProps) {
   }, [type]);
 
   const sellInTooltip = (() => {
+    if (type === ItemType.Sulfuras) return `Such a legendary item!`
     if (sellIn > 1) return `Sell in: ${sellIn} days`
     if (sellIn === 1) return `Sell today!`
     return `Was best to sell ${-sellIn + 1} days ago`
@@ -42,10 +44,10 @@ export default function InventoryItem({ item }: InventoryItemProps) {
   const qualityRate = Math.min(1, quality / 50);
 
   return (
-    <ItemBox image={imageSource} quality={qualityRate}>
+    <ItemBox as={as} image={imageSource} quality={qualityRate}>
       <ItemName>{name}</ItemName>
       <ItemSellIn tooltip={sellInTooltip}>{
-        sellIn > 0 ? sellIn : 'X'
+        sellIn > 0 ? sellIn + 'd' : 'X'
       }</ItemSellIn>
       <ItemQualityProgressbar tooltip={qualityTooltip} value={qualityRate * 100}>
         <div />
@@ -58,6 +60,7 @@ const ItemBox = styled.div<{ image: string, quality: number }>`
   width: 150px;
   height: 150px;
   flex-shrink: 0;
+  list-style: none;
   background-color: var(--background-color);
   background-image: ${props => `url(${props.image})`};
   background-size: 70%;
@@ -84,16 +87,11 @@ const ItemName = styled.h3`
 
 const ItemSellIn = styled.div<{ tooltip: string }>`
   position: absolute;
-  bottom: 0.6rem;
-  right: 0.1rem;
+  bottom: 0.75rem;
+  right: 0.5rem;
   background-color: var(--background-color);
-  width: 30px;
-  height: 30px;
-  display: grid;
-  place-items: center;
   color: var(--text-color);
   font-size: 1.4rem;
-  font-weight: 500;
   cursor: default;
   ${props => tooltipOnHover(props.tooltip)}
 `

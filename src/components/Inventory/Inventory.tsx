@@ -16,9 +16,11 @@ export default function Inventory() {
   return (
     <InventoryBox {...events} ref={ref}>
       <InventoryList>
-        {items.map((item, index) => (
-          <InventoryItem key={index} item={item} />
-        ))}
+        {items.map((item, i) => {
+          // We don't use IDs yet, so we use the reverse index as the key.
+          const index = items.length - i - 1;
+          return <InventoryItem as='li' key={index} item={item} />
+        })}
       </InventoryList>
     </InventoryBox>
   );
