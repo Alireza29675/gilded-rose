@@ -1,7 +1,6 @@
-import { useCallback, useMemo, useReducer } from 'react';
+import { useCallback, useReducer } from 'react';
 import context, { initialInventory } from './context';
-import { createGildedRoseReducer } from './reducer';
-import { GildedRose } from '@/app/gilded-rose';
+import reducer from './reducer';
 import { AddItemAction } from './types';
 
 const { Provider } = context;
@@ -11,14 +10,7 @@ interface InventoryProviderProps {
 }
 
 function InventoryProvider({ children }: InventoryProviderProps) {
-  // As we want to make the old goblin code compatible with the new one,
-  // we need to create a memoized reducer based on the legacy goblin class
-  const reducer = useMemo(() => createGildedRoseReducer(new GildedRose()), []);
-
-  const [state, dispatch] = useReducer(
-    reducer,
-    initialInventory
-  );
+  const [state, dispatch] = useReducer(reducer, initialInventory);
 
   // Inventory methods
   const nextDay = useCallback(() => dispatch({ type: 'NEXT_DAY' }), []);

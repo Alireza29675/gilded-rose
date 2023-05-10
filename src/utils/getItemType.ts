@@ -1,4 +1,4 @@
-import { ItemType } from "@/types";
+import { ItemType } from "../types";
 
 // This function is used to determine the type of item based on its name.
 export default function getItemType(name: string) {

@@ -1,5 +1,5 @@
 import getItemType from './getItemType';
-import { ItemType } from '@/types';
+import { ItemType } from '../types';
 
 describe('getItemType', () => {
   it('should return AgedBrie for Aged Brie items', () => {

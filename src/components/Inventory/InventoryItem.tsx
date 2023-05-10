@@ -46,7 +46,7 @@ export default function InventoryItem({ item }: InventoryItemProps) {
   const qualityRate = Math.min(1, quality / 50);
 
   return (
-    <ItemBox image={imageSource} qualityRate={qualityRate}>
+    <ItemBox image={imageSource} quality={qualityRate}>
       <ItemName>{name}</ItemName>
       <ItemSellIn tooltip={sellInTooltip}>{
         sellIn > 0 ? sellIn : 'X'
@@ -58,7 +58,7 @@ export default function InventoryItem({ item }: InventoryItemProps) {
   );
 }
 
-const ItemBox = styled.div<{ image: string, qualityRate: number }>`
+const ItemBox = styled.div<{ image: string, quality: number }>`
   display: flex;
   width: 150px;
   height: 150px;
@@ -71,7 +71,7 @@ const ItemBox = styled.div<{ image: string, qualityRate: number }>`
   background-repeat: no-repeat;
   background-position: center 30px;
   position: relative;
-  ${props => `filter: grayscale(${1 - props.qualityRate});`}
+  ${props => `filter: grayscale(${1 - props.quality});`}
   ${pixelBordered(6, '#888')}
 
   &:hover {

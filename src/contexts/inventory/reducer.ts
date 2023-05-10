@@ -1,31 +1,32 @@
+import cloneDeep from "lodash/clonedeep";
 import { GildedRose } from "@/app/gilded-rose"
 import { Inventory, InventoryAction } from "./types";
 
-export const createGildedRoseReducer = (gildedRose: GildedRose) => {
-  return (state: Inventory, action: InventoryAction): Inventory => {
-    // As the goblin in the corner of the room is watching, I'm not allowed
-    // to change the GildedRose class. So I'm just going to update the items
-    // to keep the state in sync.
-    gildedRose.items = state.items
+const gildedRose = new GildedRose();
 
-    switch (action.type) {
-      case 'ADD_ITEM':
-        gildedRose.addItem(action.payload.name, action.payload.sellIn, action.payload.quality);
-        return {
-          ...state,
-          items: [...gildedRose.items]
-        }
+export default (state: Inventory, action: InventoryAction): Inventory => {
+  // As the goblin in the corner of the room is watching, I'm don't want
+  // to touch the original class. I will use the class as a singleton and
+  // clone the items array to avoid mutating the original array.
+  gildedRose.items = cloneDeep(state.items);
 
-      case 'NEXT_DAY':
-        gildedRose.updateQuality()
+  switch (action.type) {
+    case 'ADD_ITEM':
+      gildedRose.addItem(action.payload.name, action.payload.sellIn, action.payload.quality);
+      return {
+        ...state,
+        items: [...gildedRose.items]
+      }
 
-        return {
-          ...state,
-          items: [...gildedRose.items]
-        }
+    case 'NEXT_DAY':
+      gildedRose.updateQuality()
 
-      default:
-        return state
-    }
+      return {
+        ...state,
+        items: gildedRose.items
+      }
+
+    default:
+      return state
   }
 }
