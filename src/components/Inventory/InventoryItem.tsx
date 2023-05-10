@@ -2,6 +2,7 @@ import { Item } from "@/app/gilded-rose";
 import { ItemType } from "@/types";
 import getItemType from "@/utils/getItemType";
 import oneOf from "@/utils/oneOf";
+import clampedText from "@/utils/styling/clampedText";
 import pixelBordered from "@/utils/styling/pixelBordered";
 import { useMemo } from "react";
 import { styled } from "styled-components";
@@ -36,7 +37,7 @@ export default function InventoryItem({ item }: InventoryItemProps) {
 
   return (
     <ItemBox image={imageSource}>
-      <h3>{name}</h3>
+      <ItemName>{name}</ItemName>
     </ItemBox>
   );
 }
@@ -54,4 +55,14 @@ const ItemBox = styled.div<{ image: string }>`
   background-repeat: no-repeat;
   background-position: center 30px;
   ${pixelBordered(6, '#888')}
+`
+
+const ItemName = styled.h3`
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 400;
+  text-align: center;
+  max-width: 100%;
+  margin: 0.7rem;
+  ${clampedText(2)}
 `

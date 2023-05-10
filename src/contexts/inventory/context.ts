@@ -7,7 +7,7 @@ export const initialInventory: Inventory = {
   items: [
     new Item("Regular Item", 10, 20),
     new Item("Aged Brie", 2, 0),
-    new Item("Backstage Passes", 5, 7),
+    new Item("Backstage Passes longer version", 5, 7),
     new Item("Sulfuras", 0, 80),
     new Item("Conjured", 3, 6),
     new Item("Conjured", 3, 6),
