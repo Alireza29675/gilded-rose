@@ -1,5 +1,11 @@
 # Gilded Rose 🔸
 
+![gilded-rose screenshot](https://user-images.githubusercontent.com/2771377/237466948-231aa8e3-5ac2-48af-a22b-a62be6ce5ff6.png)
+
+This is my solution to the [Gilded Rose Kata](https://github.com/emilybache/GildedRose-Refactoring-Kata/tree/main), in Typescript, React and styled-components.
+
+## You can see the live demo [here](https://gilded-rose-nu.vercel.app/)
+
 ## Installation
 
 - Clone the repository
