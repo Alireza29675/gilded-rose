@@ -41,7 +41,6 @@ const AppWrapper = styled.main`
 
   @media ${breakpoints.tablet} {
     max-width: 100%;
-    padding: 2rem 0;
   }
 `
 
@@ -68,6 +67,12 @@ const Footer = styled.footer`
   justify-content: center;
   align-items: center;
   gap: 1.5rem;
+
+  @media ${breakpoints.tablet} {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0 2rem;
+  }
 `
 
 const Button = styled.button`

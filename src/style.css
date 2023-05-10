@@ -13,6 +13,11 @@ html {
   --app-width: 800px;
 }
 
+::selection {
+  background-color: var(--accent-color);
+  color: var(--background-color);
+}
+
 html, body {
   margin: 0;
   padding: 0;

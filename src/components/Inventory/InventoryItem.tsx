@@ -3,7 +3,6 @@ import { ItemType } from "@/types";
 import getItemType from "@/utils/getItemType";
 import oneOf from "@/utils/oneOf";
 import clampedText from "@/utils/styling/clampedText";
-import pixelBordered from "@/utils/styling/pixelBordered";
 import tooltipOnHover from "@/utils/styling/tooltipOnHover";
 import { useMemo } from "react";
 import { styled } from "styled-components";
